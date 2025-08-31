@@ -48,7 +48,7 @@ app.use("/api/payment", paymentRoutes);
 
 const addressRoutes = require("./routes/addresses");
 app.use("/api/addresses", addressRoutes);
-const cartRoutes = require("./routes/Cart");
+const cartRoutes = require("./routes/cart");
 app.use("/api/cart", cartRoutes);
 app.get("/", (req, res) => {
   res.send("MERN Backend Running...");
