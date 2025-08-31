@@ -1,24 +1,23 @@
 // routes/orderRoutes.js
-const express = require('express');
+const express = require("express");
 const {
   createOrder,
   getOrder,
   getMyOrders,
   getAllOrders,
   updateOrder,
-  deleteOrder
-} = require('../controllers/orderController');
-const { protect, admin } = require('../middleware/authMiddleware');
+  deleteOrder,
+} = require("../controllers/orderController");
+const { protect, admin } = require("../middleware/auth");
 
 const router = express.Router();
 
-router.route('/')
-  .post(protect, createOrder)
-  .get(protect, admin, getAllOrders);
+router.route("/").post(protect, createOrder).get(protect, admin, getAllOrders);
 
-router.route('/me').get(protect, getMyOrders);
+router.route("/me").get(protect, getMyOrders);
 
-router.route('/:id')
+router
+  .route("/:id")
   .get(protect, getOrder)
   .put(protect, admin, updateOrder)
   .delete(protect, admin, deleteOrder);

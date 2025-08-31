@@ -1,5 +1,5 @@
 // controllers/productController.js
-const Product = require("../models/product");
+const Product = require("../models/Product");
 const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/async");
 const cloudinary = require("cloudinary").v2;
