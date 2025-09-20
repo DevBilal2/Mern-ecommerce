@@ -16,7 +16,7 @@ export const fetchCart = createAsyncThunk(
   "cart/fetchCart",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/cart", {
+      const { data } = await axios.get("https://mern-ecommerce-mvvv.onrender.com/api/cart", {
         withCredentials: true,
       });
       console.log(data);
@@ -31,7 +31,7 @@ export const addToCart = createAsyncThunk(
   async (cartItem, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/cart",
+        "https://mern-ecommerce-mvvv.onrender.com/api/cart",
         cartItem,
         {
           withCredentials: true, // Required for sessions
@@ -54,7 +54,7 @@ export const removeFromCart = createAsyncThunk(
     // Change from itemId to productId
     try {
       const { data } = await axios.delete(
-        `http://localhost:5000/api/cart/${productId}`,
+        `https://mern-ecommerce-mvvv.onrender.com/api/cart/${productId}`,
         { withCredentials: true }
       );
       return data.deletedProductId; // Make sure backend returns this
@@ -69,7 +69,7 @@ export const updateQuantity = createAsyncThunk(
     console.log("Sending to backend:", productId, quantity); // Debug log
     try {
       const { data } = await axios.patch(
-        `http://localhost:5000/api/cart/quantity/${productId}`,
+        `https://mern-ecommerce-mvvv.onrender.com/api/cart/quantity/${productId}`,
         { quantity },
         { withCredentials: true }
       );

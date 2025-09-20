@@ -12,7 +12,7 @@ export const fetchAddresses = createAsyncThunk(
   "address/fetchAddresses",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get("http://localhost:5000/api/addresses", {
+      const response = await axios.get("https://mern-ecommerce-mvvv.onrender.com/api/addresses", {
         withCredentials: true,
       });
 
@@ -31,7 +31,7 @@ export const addAddress = createAsyncThunk(
       const { _id, ...cleanedData } = addressData;
 
       const { data } = await axios.post(
-        "http://localhost:5000/api/addresses",
+        "https://mern-ecommerce-mvvv.onrender.com/api/addresses",
         cleanedData,
         {
           withCredentials: true,
@@ -50,7 +50,7 @@ export const deleteAddress = createAsyncThunk(
   async (addressId, { rejectWithValue }) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:5000/api/addresses/${addressId}`,
+        `https://mern-ecommerce-mvvv.onrender.com/api/addresses/${addressId}`,
         { withCredentials: true }
       );
       return { addressId, addresses: data.addresses };
@@ -68,7 +68,7 @@ export const updateAddress = createAsyncThunk(
         return;
       }
       const { data } = await axios.put(
-        `http://localhost:5000/api/addresses/${id}`,
+        `https://mern-ecommerce-mvvv.onrender.com/api/addresses/${id}`,
         updatedData,
         { withCredentials: true }
       );

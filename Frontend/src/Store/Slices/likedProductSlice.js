@@ -11,7 +11,7 @@ export const fetchLikedProducts = createAsyncThunk(
   "likedProducts/fetchLikedProducts",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get("http://localhost:5000/api/likes");
+      const response = await axios.get("https://mern-ecommerce-mvvv.onrender.com/api/likes");
       return response.data.data; // expects array of { _id, productId: string, ... }
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || err.message);
@@ -24,7 +24,7 @@ export const likeProduct = createAsyncThunk(
   "likedProducts/likeProduct",
   async (productId, { rejectWithValue }) => {
     try {
-      const response = await axios.post("http://localhost:5000/api/likes", {
+      const response = await axios.post("https://mern-ecommerce-mvvv.onrender.com/api/likes", {
         productId,
       });
       return response.data.data; // expects liked product object with productId as string
@@ -39,7 +39,7 @@ export const unlikeProduct = createAsyncThunk(
   "likedProducts/unlikeProduct",
   async (productId, { rejectWithValue }) => {
     try {
-      await axios.delete(`http://localhost:5000/api/likes/${productId}`);
+      await axios.delete(`https://mern-ecommerce-mvvv.onrender.com/api/likes/${productId}`);
       return productId; // return productId string to remove from state
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || err.message);

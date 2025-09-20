@@ -10,7 +10,7 @@ export const registerUser = createAsyncThunk(
   async (userData, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "https://mern-ecommerce-mvvv.onrender.com/api/auth/register",
         userData
       );
       return response.data.user; // assuming user is inside data.user
@@ -28,7 +28,7 @@ export const loginUser = createAsyncThunk(
   async (loginData, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://mern-ecommerce-mvvv.onrender.com/api/auth/login",
         loginData
       );
       return response.data.user;
@@ -43,7 +43,7 @@ export const logoutUser = createAsyncThunk(
   "user/logoutUser",
   async (_, thunkAPI) => {
     try {
-      await axios.post("http://localhost:5000/api/auth/logout");
+      await axios.post("https://mern-ecommerce-mvvv.onrender.com/api/auth/logout");
       return true; // return something to signal success
     } catch (error) {
       return thunkAPI.rejectWithValue("Logout failed");
@@ -54,7 +54,7 @@ export const fetchCurrentUser = createAsyncThunk(
   "user/fetchCurrentUser",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get("http://localhost:5000/api/auth/me");
+      const response = await axios.get("https://mern-ecommerce-mvvv.onrender.com/api/auth/me");
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue("Failed to fetch current user");
