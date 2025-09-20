@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true })); // Add this line
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://mern-ecommerce-mvvv.onrender.com",
+    origin: "https://mernecommercestore.netlify.app",
     credentials: true,
   })
 );
@@ -26,6 +26,8 @@ mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+     ssl: true,
+  tls: true,
   })
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
@@ -37,7 +39,12 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
-    cookie: { secure: false, httpOnly: true, maxAge: 1000 * 60 * 60 * 24 }, // 1 day
+    cookie: {
+      secure: true,
+      sameSite: "none",
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24,
+    }, // 1 day
   })
 );
 

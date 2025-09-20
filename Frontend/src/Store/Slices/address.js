@@ -12,9 +12,12 @@ export const fetchAddresses = createAsyncThunk(
   "address/fetchAddresses",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get("https://mern-ecommerce-mvvv.onrender.com/api/addresses", {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        "https://mern-ecommerce-mvvv.onrender.com/api/addresses",
+        {
+          withCredentials: true,
+        }
+      );
 
       console.log("RESPONSE DATA:", response.data); // will log the array directly
 
